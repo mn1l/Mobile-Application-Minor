@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a0eecaec17add8a428e56479765422f8
+guid: c3b7e578beb3749428704b73390bf755
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3337038689812066966
-    second: pixil-frame-0_0
+      213: -1960229017635848813
+    second: jGGdvL_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixil-frame-0_0
+      name: jGGdvL_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 464
+        width: 1351
+        height: 760
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6d4404fdf470b1d0800000000000000
-      internalID: -3337038689812066966
+      spriteID: 39df66d181edbc4e0800000000000000
+      internalID: -1960229017635848813
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixil-frame-0_0: -3337038689812066966
+      jGGdvL_0: -1960229017635848813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
