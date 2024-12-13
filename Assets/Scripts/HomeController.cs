@@ -9,14 +9,8 @@ public class HomeController : MonoBehaviour
         Debug.Log("Script has just started!! :3");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Start the gameview scene (when button is pressed)
-    public void gotoGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(SceneData.gameview);
     }

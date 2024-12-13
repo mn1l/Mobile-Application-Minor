@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3b7e578beb3749428704b73390bf755
+guid: d25423edcd0f21e43a7e48ac7f8b8e82
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1960229017635848813
-    second: jGGdvL_0
+      213: 3197212975254494017
+    second: shadedLight16_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jGGdvL_0
+      name: shadedLight16_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1351
-        height: 760
+        width: 50
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39df66d181edbc4e0800000000000000
-      internalID: -1960229017635848813
+      spriteID: 14b505de248ce5c20800000000000000
+      internalID: 3197212975254494017
       vertices: []
       indices: 
       edges: []
@@ -143,8 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      jGGdvL_0: -1960229017635848813
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
