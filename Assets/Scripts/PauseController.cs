@@ -41,6 +41,7 @@ public class PauseController : Menu
     {
         GameQuit = true;
         Application.Quit();
+        ResumeGame();
         SceneManager.LoadScene(SceneData.homepage);
     }
 

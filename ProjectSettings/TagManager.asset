@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Ground
   - Pause
+  - Key
+  - Door
+  - OpenedDoor
+  - JumpButton
   layers:
   - Default
   - TransparentFX
