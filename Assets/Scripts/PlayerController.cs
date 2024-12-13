@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     public void JumpIn()
     {
-        Debug.Log("jump de gakkel in cuh");
+        Application.Quit();
+        SceneManager.LoadScene(SceneData.homepage);
     }
 }
