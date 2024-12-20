@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        JumpButtonUI.SetActive(false);
+        if (other != null)
+        {
+        JumpButtonUI.SetActive(false);            
+        }
     }
 
     public void JumpIn()
