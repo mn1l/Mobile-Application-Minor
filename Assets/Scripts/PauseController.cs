@@ -5,18 +5,16 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
-public class PauseController : Menu
+public class PauseController : MonoBehaviour
 {
+    public GameObject pauseMenuUI;
+    public GameObject settingsMenuUI;
 
     public static bool GameIsPaused = false;
     public static bool GameQuit = false;
    
     public GameObject pauseButton; 
     
-    /*
-     * Stops gameplay / freezes time
-     * Activates the pause menu and deactivates the pause button.
-     */
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
@@ -24,11 +22,7 @@ public class PauseController : Menu
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-
-    /*
-     * Resumes gameplay and unfreezes time
-     * Deactivates the pause menu and activates the pause button again.
-     */
+    
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
@@ -49,5 +43,11 @@ public class PauseController : Menu
     {
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
+    }
+    
+    public void CloseSettings()
+    {
+        settingsMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
     }
 }
