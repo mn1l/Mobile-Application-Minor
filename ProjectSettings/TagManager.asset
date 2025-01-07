@@ -44,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Lock
+    uniqueID: 239229463
+    locked: 0
   - name: Player
     uniqueID: 813876303
     locked: 0
