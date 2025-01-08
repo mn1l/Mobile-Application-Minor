@@ -6,29 +6,54 @@ public class GameController : MonoBehaviour
 {
     
     public GameObject EnterDoorButton;
+    public GameObject KeyOneIcon;
+    public GameObject KeyTwoIcon;
+    public GameObject KeyThreeIcon;
 
-    private bool hasKey = false;
+    private bool hasKeyOne = false;
+    private bool hasKeyTwo = false;
+    private bool hasKeyThree = false;
+    
     private bool doorOpen = false;
 
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Key"))
+        if (other.collider.CompareTag("KeyOne"))
         {
-            hasKey = true;
-            Debug.Log ("key has been picked up");
+            hasKeyOne = true;
+            KeyOneIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
+            other.gameObject.SetActive(false);
+        }
+        
+        if (other.collider.CompareTag("KeyTwo"))
+        {
+            hasKeyTwo = true;
+            KeyTwoIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
+            other.gameObject.SetActive(false);
+        }
+        
+        if (other.collider.CompareTag("KeyThree"))
+        {
+            hasKeyThree = true;
+            KeyThreeIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
             other.gameObject.SetActive(false);
         }
 
-        if (other.collider.CompareTag("Door") && hasKey)
+        if (other.collider.CompareTag("Door") && hasKeyOne && hasKeyTwo && hasKeyThree)
         {
-            hasKey = false;
+            hasKeyOne = false;
+            hasKeyTwo = false;
+            hasKeyThree = false;
             doorOpen = true;
-            Debug.Log("Door has been opened");
             other.gameObject.SetActive(false);
+
         }
     }
-
+    
+    //----------
+    
+    // Checks if door can be opened by player
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.collider.CompareTag("OpenedDoor") && doorOpen)
@@ -36,7 +61,10 @@ public class GameController : MonoBehaviour
             EnterDoorButton.SetActive(true);
         }
     }
-
+    
+    //-------------
+    
+    // Checks whether collision is true, if not then door button isn't visible
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other != null)
@@ -44,10 +72,14 @@ public class GameController : MonoBehaviour
             EnterDoorButton.SetActive(false);            
         }
     }
-
-    public void JumpIn()
+    
+    // Enter door and finish level
+    public void EnterDoor()
     {
         Application.Quit();
         SceneManager.LoadScene(SceneData.homepage);
+        
+        // Unlock next level in level overview
+        // Jump to next level scene
     }
 }
