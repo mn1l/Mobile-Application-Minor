@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      panel-transparent-center-014_0: -3637476712038703552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
