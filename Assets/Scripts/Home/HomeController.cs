@@ -5,6 +5,7 @@ public class HomeController : MonoBehaviour
 {
     public CanvasGroup mainMenuCanvasGroup;
     public GameObject settingsMenu;
+    public GameObject settingsButton;
     
     void Start()
     {
@@ -31,6 +32,7 @@ public class HomeController : MonoBehaviour
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);
+        settingsButton.SetActive(false);
         SetMainMenuInteractable(false);
     }
     
@@ -38,6 +40,7 @@ public class HomeController : MonoBehaviour
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
+        settingsButton.SetActive(true);
         SetMainMenuInteractable(true);
     }
     
