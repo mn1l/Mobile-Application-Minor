@@ -6,10 +6,13 @@ TagManager:
   tags:
   - Ground
   - Pause
-  - Key
   - Door
   - OpenedDoor
-  - JumpButton
+  - EnterDoor
+  - EnterMiniGame
+  - KeyOne
+  - KeyTwo
+  - KeyThree
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - UI
   - Player
   - Background
-  - 
+  - Collision
   - 
   - 
   - 
@@ -44,12 +47,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Lock
-    uniqueID: 239229463
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2029649117
+    locked: 0
+  - name: WalkInFront
+    uniqueID: 1508275593
+    locked: 0
+  - name: Collision
+    uniqueID: 2938370201
     locked: 0
   - name: Player
     uniqueID: 813876303
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: WalkBehind
+    uniqueID: 239229463
     locked: 0

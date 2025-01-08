@@ -6,7 +6,7 @@ public class SceneData : MonoBehaviour
 {
     // Get assigned in 
     public static int homepage = 0;
-    public static int gameview = 1;
-    public static int levelsview = 2;
-    public static int storepage = 3;
+    public static int levelsview = 1;
+    public static int storepage = 2;
+    public static int level1 = 3;
 }

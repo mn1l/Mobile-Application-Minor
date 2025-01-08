@@ -14,7 +14,7 @@ public class HomeController : MonoBehaviour
     // Start the gameview scene (when button is pressed)
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneData.gameview);
+        SceneManager.LoadScene(SceneData.level1);
     }
     
     public void OpenLevelOverview()
