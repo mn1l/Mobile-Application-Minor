@@ -5,60 +5,93 @@ using UnityEngine.Serialization;
 public class GameController : MonoBehaviour
 {
     
+    /*
+     * TODO
+     * Starting up Minigames
+     * When colliding with chest -> Show enter minigame button -> start correct game
+     *
+     * TODO
+     * Finishing up Minigames
+     * When game is finished -> haskey = true -> Get key -> Unactivate closed chest
+     */
+    
+    [Header("Buttons")]
     public GameObject EnterDoorButton;
-    public GameObject KeyOneIcon;
-    public GameObject KeyTwoIcon;
-    public GameObject KeyThreeIcon;
+    public GameObject QuitMiniGameButton;
+    public GameObject OpenMiniGameButton1;
+    //public GameObject OpenMiniGameButton2;
+    //public GameObject OpenMiniGameButton3;
+
+    [Header("MiniGameViews")] 
+    public GameObject MiniGame1;
+    //public GameObject MiniGame2;
+    //public GameObject MiniGame3;
+    
+    [Header("Key Icons")]
+    public GameObject KeyIcon1;
+    public GameObject KeyIcon2;
+    public GameObject KeyIcon3;
 
     private bool hasKeyOne = false;
     private bool hasKeyTwo = false;
     private bool hasKeyThree = false;
     
     private bool doorOpen = false;
-
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("KeyOne"))
+        switch (other.collider.tag)
         {
-            hasKeyOne = true;
-            KeyOneIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
-            other.gameObject.SetActive(false);
-        }
-        
-        if (other.collider.CompareTag("KeyTwo"))
-        {
-            hasKeyTwo = true;
-            KeyTwoIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
-            other.gameObject.SetActive(false);
-        }
-        
-        if (other.collider.CompareTag("KeyThree"))
-        {
-            hasKeyThree = true;
-            KeyThreeIcon.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
-            other.gameObject.SetActive(false);
-        }
+            case "KeyOne":
+                hasKeyOne = true;
+                KeyIcon1.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
+                other.gameObject.SetActive(false);
+                break;
 
-        if (other.collider.CompareTag("Door") && hasKeyOne && hasKeyTwo && hasKeyThree)
-        {
-            hasKeyOne = false;
-            hasKeyTwo = false;
-            hasKeyThree = false;
-            doorOpen = true;
-            other.gameObject.SetActive(false);
+            case "KeyTwo":
+                hasKeyTwo = true;
+                KeyIcon2.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
+                other.gameObject.SetActive(false);
+                break;
 
+            case "KeyThree":
+                hasKeyThree = true;
+                KeyIcon3.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
+                other.gameObject.SetActive(false);
+                break;
+
+            case "Door":
+                if (hasKeyOne && hasKeyTwo && hasKeyThree)
+                {
+                    hasKeyOne = false;
+                    hasKeyTwo = false;
+                    hasKeyThree = false;
+                    doorOpen = true;
+                    other.gameObject.SetActive(false);
+                }
+                break;
         }
     }
     
     //----------
     
-    // Checks if door can be opened by player
+
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.collider.CompareTag("OpenedDoor") && doorOpen)
+        switch (other.collider.tag)
         {
-            EnterDoorButton.SetActive(true);
+            case "KeyOne":
+                //
+            case "KeyTwo":
+                // do something
+            case "KeyThree":
+                // do something
+            case "OpenedDoor":
+                if (doorOpen)
+                {
+                    EnterDoorButton.SetActive(true);
+                }
+                break;
         }
     }
     
@@ -81,5 +114,11 @@ public class GameController : MonoBehaviour
         
         // Unlock next level in level overview
         // Jump to next level scene
+    }
+
+
+    public void QuitMiniGame()
+    {
+        
     }
 }

@@ -6941,7 +6941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25653,6 +25653,7 @@ GameObject:
   - component: {fileID: 880966196}
   - component: {fileID: 880966195}
   - component: {fileID: 880966194}
+  - component: {fileID: 880966198}
   m_Layer: 5
   m_Name: MiniGameOne
   m_TagString: Untagged
@@ -25758,6 +25759,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880966192}
   m_CullTransparentMesh: 1
+--- !u!114 &880966198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880966192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233652feeac92774f87f8b91c2ce65dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &881938771
 GameObject:
   m_ObjectHideFlags: 0
@@ -27112,7 +27125,7 @@ GameObject:
   - component: {fileID: 1326739225}
   - component: {fileID: 1326739224}
   m_Layer: 5
-  m_Name: ReturnButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28132,7 +28145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1805394630
 MonoBehaviour:
   m_ObjectHideFlags: 0
