@@ -1,19 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour
 {
-    
-    /*
-     * TODO
-     * Starting up Minigames
-     * When colliding with chest -> Show enter minigame button -> start correct game
-     *
-     * TODO
-     * Finishing up Minigames
-     * When game is finished -> haskey = true -> Get key -> Unactivate closed chest
-     */
     
     [Header("Buttons")]
     public GameObject EnterDoorButton;
@@ -43,6 +34,7 @@ public class GameController : MonoBehaviour
         switch (other.collider.tag)
         {
             case "KeyOne":
+                print("gadd");
                 hasKeyOne = true;
                 KeyIcon1.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
                 other.gameObject.SetActive(false);
@@ -115,8 +107,7 @@ public class GameController : MonoBehaviour
         // Unlock next level in level overview
         // Jump to next level scene
     }
-
-
+    
     public void QuitMiniGame()
     {
         

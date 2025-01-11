@@ -11,19 +11,12 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
 {
     public int width = 10;
     public int height = 10;
-    public int thickness = 1;
     public int seed = -1; // Optional to randomise the maze or set a specific seed
     
     public Tilemap mazeTilemap;
-    public Tilemap objectsTilemap;
-    public Tilemap openedTilemap;
         
     public Tile pathTile;
     public TileBase wallRuleTile;
-    public Tile chestTile;
-    public Tile openedChestTile;
-    public Tile doorTile;
-    public Tile openedDoorTile;
 
     private int[,] grid;    // Internal representation of the maze
     private const int N = 1, S = 2, E = 4, W = 8; // Directions
@@ -35,14 +28,6 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
         { N, new Vector2Int(0, 1) },
         { S, new Vector2Int(0, -1) }
     };
-
-    // private readonly Dictionary<int, int> opposites = new Dictionary<int, int>
-    // {
-    //     { E, W },
-    //     { W, E },
-    //     { N, S },
-    //     { S, N }
-    // };
 
     private int opposites(int direction)
     {
@@ -92,8 +77,6 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
         if (mazeTilemap != null)
         {
             mazeTilemap.ClearAllTiles();
-            objectsTilemap.ClearAllTiles();
-            openedTilemap.ClearAllTiles();
             seed = -1;
         }
     }
@@ -177,38 +160,8 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
         mazeTilemap.SetTile(entrancePosition, pathTile);
         
         var exitPosition = new Vector3Int(width * 2 - 1, 0, 0);
-        objectsTilemap.SetTile(exitPosition, pathTile);
-
-        // Place the exit tile at the specified position
-        if (doorTile != null)
-        {
-            // Ensure the exit tile position is valid
-            if (objectsTilemap.HasTile(exitPosition))
-            {
-                // Set the tile at the exit position to the door tile
-                objectsTilemap.SetTile(exitPosition, doorTile);
-                openedTilemap.SetTile(exitPosition, openedDoorTile);
-            }
-        }
-
-        // Randomly place 3 chest tiles on path tiles
-        if (chestTile != null && pathTiles.Count > 3)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                // Randomly pick a path tile from the list
-                int randomIndex = UnityEngine.Random.Range(0, pathTiles.Count);
-                Vector3Int randomTilePosition = pathTiles[randomIndex];
-
-                // Set the tile at the chosen position to the chest tile on the ChestTilemap
-                objectsTilemap.SetTile(randomTilePosition, chestTile);
-                openedTilemap.SetTile(randomTilePosition, openedChestTile);
-
-                // Optionally remove the placed key from the list to avoid reusing the same tile
-                pathTiles.RemoveAt(randomIndex);
-            }
-        }
-
+        mazeTilemap.SetTile(exitPosition, pathTile);
+        
         // Surround the maze with walls
         for (int y = 0; y < height * 2 + 1; y++)
         {

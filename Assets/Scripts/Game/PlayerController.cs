@@ -20,5 +20,8 @@ public class PlayerController : MonoBehaviour
         //transform.Translate( Time.deltaTime * speed * moveDirection ); // Move the player
     }
     
-    
+    /*
+     * TODO
+     * Create new movement with arrow buttons, design choice as it improves QOL when playing and moving through the maze
+     */
 }
