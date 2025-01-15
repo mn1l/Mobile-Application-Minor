@@ -8,15 +8,15 @@ public class GameController : MonoBehaviour
     
     [Header("Buttons")]
     public GameObject EnterDoorButton;
-    public GameObject QuitMiniGameButton;
-    public GameObject OpenMiniGameButton1;
-    //public GameObject OpenMiniGameButton2;
-    //public GameObject OpenMiniGameButton3;
+    // public GameObject QuitMiniGameButton;
+    // public GameObject OpenMiniGameButton1;
+    // public GameObject OpenMiniGameButton2;
+    // public GameObject OpenMiniGameButton3;
 
-    [Header("MiniGameViews")] 
-    public GameObject MiniGame1;
-    //public GameObject MiniGame2;
-    //public GameObject MiniGame3;
+    // [Header("MiniGameViews")] 
+    // public GameObject MiniGame1;
+    // public GameObject MiniGame2;
+    // public GameObject MiniGame3;
     
     [Header("Key Icons")]
     public GameObject KeyIcon1;
