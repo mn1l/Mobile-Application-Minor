@@ -1,6 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,9 +17,13 @@ public class PlayerController : MonoBehaviour
     public GameObject KeyIcon2;
     public GameObject KeyIcon3;
 
+    public TMP_Text CoinCount;
+
     private bool hasKeyOne = false;
     private bool hasKeyTwo = false;
     private bool hasKeyThree = false;
+    
+    private int coinCount = 0;
     
     private bool doorOpen = false;
 
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        CoinCount.text = coinCount.ToString();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -39,6 +46,11 @@ public class PlayerController : MonoBehaviour
     {
         switch (other.collider.tag)
         {
+            case "Coin":
+                coinCount++;
+                CoinCount.text = coinCount.ToString();
+                other.gameObject.SetActive(false);
+                break;
             case "KeyOne":
                 hasKeyOne = true;
                 KeyIcon1.GetComponent<UnityEngine.UI.Image>().color = new Color(1f, 1f, 1f, 1f);
