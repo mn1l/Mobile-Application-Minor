@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelsViewController : MonoBehaviour
-{   
+{
+    public GameObject pageOne;
+    public GameObject pageTwo;
+
+    public void Start()
+    {
+        pageOne.SetActive(true);
+        pageTwo.SetActive(false);
+    }
+
     public void CloseLevelsView()
     {
         SceneManager.LoadScene(SceneData.homepage);
@@ -46,5 +55,18 @@ public class LevelsViewController : MonoBehaviour
                 buttonComponent.interactable = true;
             }
         }
+    }
+
+
+    public void nextPage()
+    {
+        pageOne.SetActive(false);
+        pageTwo.SetActive(true);
+    }
+
+    public void previousPage()
+    {
+        pageOne.SetActive(true);
+        pageTwo.SetActive(false);
     }
 }
