@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private InputActionReference movement;
     [SerializeField] private float speed;
@@ -40,6 +40,16 @@ public class PlayerController : MonoBehaviour
         Vector2 moveDirection = movement.action.ReadValue<Vector2>(); // Read the movement input direction
         rb.velocity = moveDirection * speed;
         //transform.Translate( Time.deltaTime * speed * moveDirection ); // Move the player
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.coinCount = data.coinCount;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.coinCount = this.coinCount;
     }
     
     private void OnCollisionEnter2D(Collision2D other)
