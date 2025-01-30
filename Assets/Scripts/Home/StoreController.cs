@@ -10,7 +10,7 @@ public class StoreController : MonoBehaviour, IDataPersistence
 {
     public int[,] shopItems = new int[7, 7];
     public TMP_Text CoinCount;
-    private int coinCount = 1000;
+    private int coinCount;
     
     [Header("Bought Item GameObjects")]
     public GameObject[] boughtItems;
