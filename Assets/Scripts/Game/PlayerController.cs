@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public GameObject KeyIcon3;
 
     public TMP_Text CoinCount;
+    public Dictionary<string, bool> levelsUnlocked;
 
     private bool hasKeyOne = false;
     private bool hasKeyTwo = false;
@@ -46,11 +49,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         coinCount = data.coinCount;
+        levelsUnlocked = data.levelsUnlocked;
     }
 
     public void SaveData(ref GameData data)
     {
         data.coinCount = coinCount;
+        data.levelsUnlocked = levelsUnlocked;
     }
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -129,29 +134,33 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // Enter door and finish level
     public void EnterDoor()
     {
-        // Get the current scene name
         string currentScene = SceneManager.GetActiveScene().name;
 
-        // Determine the next level's name based on the current level
         int currentLevelIndex = 0;
 
-        // Check if the current scene matches a format like "Level1", "Level2", etc.
         if (currentScene.StartsWith("Level"))
         {
-            // Extract the level number from the scene name
-            string levelNumberString = currentScene.Substring(5); // Get the part after "Level"
+            string levelNumberString = currentScene.Substring(5);
         
             if (int.TryParse(levelNumberString, out currentLevelIndex))
             {
-                // Increment to the next level
                 currentLevelIndex++;
-            
-                // Construct the next level's scene name
+                foreach (string key in levelsUnlocked.Keys.ToList())
+                {
+                    if (key.Equals(currentLevelIndex.ToString()))
+                    {
+                        levelsUnlocked[key] = true; // Modify the dictionary safely
+                        Debug.Log(key + " is unlocked");
+                        break;
+                    }
+                    
+                }
+                
                 string nextLevelSceneName = $"Level{currentLevelIndex}";
             
-                // Load the next level scene
                 if (SceneManager.GetSceneByName(nextLevelSceneName) != null)
                 {
+                    Application.Quit();
                     SceneManager.LoadScene(nextLevelSceneName);
                 }
                 else

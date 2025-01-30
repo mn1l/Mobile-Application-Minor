@@ -6,11 +6,11 @@ using UnityEngine;
 public class GameData
 {
     public int coinCount;
+    public Dictionary<string, bool> levelsUnlocked;
 
-    // Values defined in this constructor will be default values
-    // The game starts with when there's no data to load
     public GameData()
     {
         this.coinCount = 0;
+        levelsUnlocked = new Dictionary<string, bool>();
     }
 }

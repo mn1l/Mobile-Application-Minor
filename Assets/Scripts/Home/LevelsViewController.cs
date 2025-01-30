@@ -1,13 +1,17 @@
 using System;
+using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelsViewController : MonoBehaviour
+public class LevelsViewController : MonoBehaviour, IDataPersistence
 {
     public GameObject pageOne;
     public GameObject pageTwo;
+    
+    public Dictionary<string, bool> levelsUnlocked;
 
     public void Start()
     {
@@ -18,6 +22,23 @@ public class LevelsViewController : MonoBehaviour
     public void CloseLevelsView()
     {
         SceneManager.LoadScene(SceneData.homepage);
+    }
+
+    public void LoadData(GameData data)
+    {
+        levelsUnlocked = data.levelsUnlocked;
+        foreach (KeyValuePair<string, bool> level in levelsUnlocked)
+        {
+            if (level.Value)
+            {
+                UnlockLevel(level.Key);
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.levelsUnlocked = levelsUnlocked;
     }
     
     /*
