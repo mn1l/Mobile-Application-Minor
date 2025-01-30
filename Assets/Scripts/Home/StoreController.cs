@@ -8,7 +8,7 @@ using Debug = UnityEngine.Debug;
 
 public class StoreController : MonoBehaviour, IDataPersistence
 {
-    public int[,] shopItems = new int[6, 6];
+    public int[,] shopItems = new int[7, 7];
     public TMP_Text CoinCount;
     private int coinCount = 1000;
     
@@ -31,6 +31,7 @@ public class StoreController : MonoBehaviour, IDataPersistence
         shopItems[1, 3] = 3;
         shopItems[1, 4] = 4;
         shopItems[1, 5] = 5;
+        shopItems[1, 6] = 6;
         
         //Price
         shopItems[2, 1] = 10;
@@ -38,13 +39,7 @@ public class StoreController : MonoBehaviour, IDataPersistence
         shopItems[2, 3] = 24;
         shopItems[2, 4] = 38;
         shopItems[2, 5] = 80;
-        
-        //Equip
-        shopItems[3, 1] = 0;
-        shopItems[3, 2] = 0;
-        shopItems[3, 3] = 0;
-        shopItems[3, 4] = 0;
-        shopItems[3, 5] = 0;
+        shopItems[2, 6] = 0;
         
         // Initialize TMP_Text components
         itemTexts = new TMP_Text[itemTextObjects.Length];
@@ -104,16 +99,8 @@ public class StoreController : MonoBehaviour, IDataPersistence
         // Enable the selected item and set text to "Equipped"
         int index = itemID - 1;
         boughtItems[index].SetActive(true);
-        if (itemTexts[index].text == "Equipped")
-        {
-            itemTexts[index].text = "Unequipped";
-            itemTexts[index].color = Color.red;
-        }
-        else
-        {
-            itemTexts[index].text = "Equipped";
-            itemTexts[index].color = Color.green;
-        }
+        itemTexts[index].text = "Equipped";
+        itemTexts[index].color = Color.green;
     }
     
     //TODO make sure that bought skins can be equipped/unequipped in game (one at a time), and these are saved too
