@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     private bool hasKeyTwo = false;
     private bool hasKeyThree = false;
     
-    private int coinCount = 0;
+    private int coinCount;
     
     private bool doorOpen = false;
 
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        CoinCount.text = coinCount.ToString();
         Vector2 moveDirection = movement.action.ReadValue<Vector2>(); // Read the movement input direction
         rb.velocity = moveDirection * speed;
         //transform.Translate( Time.deltaTime * speed * moveDirection ); // Move the player
@@ -44,12 +45,12 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.coinCount = data.coinCount;
+        coinCount = data.coinCount;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.coinCount = this.coinCount;
+        data.coinCount = coinCount;
     }
     
     private void OnCollisionEnter2D(Collision2D other)

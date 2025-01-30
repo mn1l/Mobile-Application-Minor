@@ -39,15 +39,10 @@ public class PauseController : MonoBehaviour
         SceneManager.LoadScene(SceneData.homepage);
     }
 
-    public void OpenSettings()
+    public void RestartGame()
     {
-        pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(true);
+        var CurrentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(CurrentScene.name);
     }
-    
-    public void CloseSettings()
-    {
-        settingsMenuUI.SetActive(false);
-        pauseMenuUI.SetActive(true);
-    }
+   
 }

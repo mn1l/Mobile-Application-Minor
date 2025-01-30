@@ -44,7 +44,6 @@ public class RecursiveBacktrackingMazeEditor : Editor
         EditorGUILayout.LabelField("Tilemaps", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("mazeTilemap"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wallTilemap"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("objectsTilemap"));
         //EditorGUILayout.PropertyField(serializedObject.FindProperty("openedTilemap"));
         
         EditorGUILayout.Space();

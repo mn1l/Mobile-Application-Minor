@@ -1,3 +1,4 @@
+using System;
 using Home;
 using TMPro;
 using UnityEngine;
@@ -19,12 +20,22 @@ public class StoreController : MonoBehaviour, IDataPersistence
     public GameObject[] itemTextObjects; 
 
     private TMP_Text[] itemTexts;
+    
+    
+    public void LoadData(GameData data)
+    {
+        coinCount = data.coinCount;
+    }
 
+    public void SaveData(ref GameData data)
+    {
+        data.coinCount = coinCount;
+    }
     
     private void Start()
     {
-        CoinCount.text = coinCount.ToString();
         
+        CoinCount.text = coinCount.ToString();
         //ID's
         shopItems[1, 1] = 1;
         shopItems[1, 2] = 2;
@@ -53,16 +64,6 @@ public class StoreController : MonoBehaviour, IDataPersistence
     public void CloseStore()
     {
         SceneManager.LoadScene(SceneData.homepage);
-    }
-
-    public void LoadData(GameData data)
-    {
-        coinCount = data.coinCount;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.coinCount = coinCount;
     }
 
     public void Buy()
