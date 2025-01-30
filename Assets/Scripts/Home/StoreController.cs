@@ -62,6 +62,9 @@ public class StoreController : MonoBehaviour, IDataPersistence
             ButtonRef.SetActive(false);
             
             //TODO make sure that the item that is now owned, is visible Own1-Own5...
+            
         }
     }
+    
+    //TODO make sure that bought skins can be equipped/unequipped in game (one at a time), and these are saved too
 }
