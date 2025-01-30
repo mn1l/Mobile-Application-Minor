@@ -74,7 +74,7 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
     {
         ClearMaze();
         
-        if (seed <= -1)
+        if (seed >= 0)
         {
             UnityEngine.Random.InitState(seed);
         }
@@ -94,6 +94,7 @@ public class RecursiveBacktrackingMaze : MonoBehaviour
         if (mazeTilemap != null)
         {
             mazeTilemap.ClearAllTiles();
+            wallTilemap.ClearAllTiles();
             seed = -1;
         }
     }
