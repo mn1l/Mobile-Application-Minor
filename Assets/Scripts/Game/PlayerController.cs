@@ -129,10 +129,36 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // Enter door and finish level
     public void EnterDoor()
     {
-        Application.Quit();
-        SceneManager.LoadScene(SceneData.homepage);
+        // Get the current scene name
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // Determine the next level's name based on the current level
+        int currentLevelIndex = 0;
+
+        // Check if the current scene matches a format like "Level1", "Level2", etc.
+        if (currentScene.StartsWith("Level"))
+        {
+            // Extract the level number from the scene name
+            string levelNumberString = currentScene.Substring(5); // Get the part after "Level"
         
-        // Unlock next level in level overview
-        // Jump to next level scene
+            if (int.TryParse(levelNumberString, out currentLevelIndex))
+            {
+                // Increment to the next level
+                currentLevelIndex++;
+            
+                // Construct the next level's scene name
+                string nextLevelSceneName = $"Level{currentLevelIndex}";
+            
+                // Load the next level scene
+                if (SceneManager.GetSceneByName(nextLevelSceneName) != null)
+                {
+                    SceneManager.LoadScene(nextLevelSceneName);
+                }
+                else
+                {
+                    SceneManager.LoadScene("LevelsView");
+                }
+            }
+        }
     }
 }
