@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class StoreController : MonoBehaviour, IDataPersistence
 {
     public int[,] shopItems = new int[6, 6];
     public TMP_Text CoinCount;
     private int coinCount = 1000;
+    
+    [Header("Bought Item GameObjects")]
+    public GameObject[] boughtItems;
 
-    public GameObject Own1;
-    public GameObject Own2;
-    public GameObject Own3;
-    public GameObject Own4;
-    public GameObject Own5;
+    [Header("Item UI Texts")]
+    public GameObject[] itemTextObjects; 
+
+    private TMP_Text[] itemTexts;
+
     
     private void Start()
     {
@@ -34,7 +38,22 @@ public class StoreController : MonoBehaviour, IDataPersistence
         shopItems[2, 3] = 24;
         shopItems[2, 4] = 38;
         shopItems[2, 5] = 80;
+        
+        //Equip
+        shopItems[3, 1] = 0;
+        shopItems[3, 2] = 0;
+        shopItems[3, 3] = 0;
+        shopItems[3, 4] = 0;
+        shopItems[3, 5] = 0;
+        
+        // Initialize TMP_Text components
+        itemTexts = new TMP_Text[itemTextObjects.Length];
+        for (int i = 0; i < itemTextObjects.Length; i++)
+        {
+            itemTexts[i] = itemTextObjects[i].GetComponent<TMP_Text>();
+        }
     }
+    
     
     public void CloseStore()
     {
@@ -60,9 +79,40 @@ public class StoreController : MonoBehaviour, IDataPersistence
             coinCount -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
             CoinCount.text = coinCount.ToString();
             ButtonRef.SetActive(false);
-            
-            //TODO make sure that the item that is now owned, is visible Own1-Own5...
-            
+            var itemID = shopItems[1, ButtonRef.GetComponent<ButtonInfo>().ItemID];
+            Equipped(itemID);
+        }
+    }
+
+    public void EquipItem()
+    {
+        GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
+        Equipped(int.Parse(EventSystem.current.currentSelectedGameObject.name));
+    }
+
+    public void Equipped(int itemID)
+    {
+        if (itemID < 1 || itemID > boughtItems.Length) return; // Ensure valid index
+
+        // Disable all items and set their text to "Unequipped"
+        for (int i = 0; i < boughtItems.Length; i++)
+        {
+            itemTexts[i].text = "Unequipped";
+            itemTexts[i].color = Color.red;
+        }
+
+        // Enable the selected item and set text to "Equipped"
+        int index = itemID - 1;
+        boughtItems[index].SetActive(true);
+        if (itemTexts[index].text == "Equipped")
+        {
+            itemTexts[index].text = "Unequipped";
+            itemTexts[index].color = Color.red;
+        }
+        else
+        {
+            itemTexts[index].text = "Equipped";
+            itemTexts[index].color = Color.green;
         }
     }
     
