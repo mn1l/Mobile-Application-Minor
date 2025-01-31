@@ -49,13 +49,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         coinCount = data.coinCount;
-        levelsUnlocked = data.levelsUnlocked;
     }
 
     public void SaveData(ref GameData data)
     {
         data.coinCount = coinCount;
-        data.levelsUnlocked = levelsUnlocked;
     }
     
     private void OnCollisionEnter2D(Collision2D other)

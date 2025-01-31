@@ -34,14 +34,12 @@ public class PauseController : MonoBehaviour
     public void QuitGame()
     {
         GameQuit = true;
-        Application.Quit();
         ResumeGame();
         SceneManager.LoadScene(SceneData.homepage);
     }
 
     public void RestartGame()
     {
-        Application.Quit();
         var CurrentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(CurrentScene.name);
     }

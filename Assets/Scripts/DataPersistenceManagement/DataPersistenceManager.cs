@@ -12,7 +12,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private FileDataHandler dataHandler;
     private List<IDataPersistence> dataPersistenceObjects;
-    public static DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager instance { get; set; }
 
     private void Awake()
     {
@@ -34,7 +34,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = new GameData();
     }
-    
     
     
     public void LoadGame()

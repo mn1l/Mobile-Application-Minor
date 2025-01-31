@@ -6,11 +6,11 @@ using UnityEngine;
 public class GameData
 {
     public int coinCount;
-    public Dictionary<string, bool> levelsUnlocked;
+    /*public Dictionary<string, bool> levelsUnlocked;*/
 
     public GameData()
     {
         this.coinCount = 0;
-        levelsUnlocked = new Dictionary<string, bool>();
+        /*levelsUnlocked = new Dictionary<string, bool>();*/
     }
 }

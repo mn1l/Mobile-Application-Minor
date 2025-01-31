@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelsViewController : MonoBehaviour, IDataPersistence
+public class LevelsViewController : MonoBehaviour
 {
     public GameObject pageOne;
     public GameObject pageTwo;
@@ -22,23 +22,6 @@ public class LevelsViewController : MonoBehaviour, IDataPersistence
     public void CloseLevelsView()
     {
         SceneManager.LoadScene(SceneData.homepage);
-    }
-
-    public void LoadData(GameData data)
-    {
-        levelsUnlocked = data.levelsUnlocked;
-        foreach (KeyValuePair<string, bool> level in levelsUnlocked)
-        {
-            if (level.Value)
-            {
-                UnlockLevel(level.Key);
-            }
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.levelsUnlocked = levelsUnlocked;
     }
     
     /*
