@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             if (int.TryParse(levelNumberString, out currentLevelIndex))
             {
                 currentLevelIndex++;
-                foreach (string key in levelsUnlocked.Keys.ToList())
+                /*foreach (string key in levelsUnlocked.Keys.ToList())
                 {
                     if (key.Equals(currentLevelIndex.ToString()))
                     {
@@ -152,12 +152,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
                         break;
                     }
                     
-                }
+                }*/
                 
                 string nextLevelSceneName = $"Level{currentLevelIndex}";
             
                 if (SceneManager.GetSceneByName(nextLevelSceneName) != null)
                 {
+                    DataPersistenceManager.instance.SaveGame();
                     Application.Quit();
                     SceneManager.LoadScene(nextLevelSceneName);
                 }

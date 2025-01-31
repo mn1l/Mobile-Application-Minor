@@ -10,4 +10,7 @@ public class SceneData : MonoBehaviour
     public static int storepage = 2;
     public static int level1 = 3;
     public static int level2 = 4;
+    public static int level3 = 5;
+    public static int level4 = 6;
+    public static int level5 = 7;
 }

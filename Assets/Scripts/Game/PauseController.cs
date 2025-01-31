@@ -40,6 +40,7 @@ public class PauseController : MonoBehaviour
 
     public void RestartGame()
     {
+        ResumeGame();
         var CurrentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(CurrentScene.name);
     }
